@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L♡gin D♡lls 公式サイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:wght@400;600&family=Raleway:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <h1 class="loading-text">Connecting ...</h1>
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- カスタムカーソル -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- ナビゲーションメニュー -->
+    <nav class="nav-menu" id="navMenu">
+        <button class="nav-link" data-target="character-section">Character</button>
+        <button class="nav-link" data-target="news-section">News</button>
+        <button class="nav-link" data-target="sns-section">Follow</button>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content" id="mainContent">
+        <!-- ロゴメインビジュアルセクション -->
+        <section class="logo-section" id="logo-section">
+            <div class="logo-showcase">
+                <img src="sozai/white_rogo.png" alt="L♡gin D♡lls" class="logo-image">
+            </div>
+        </section>
+
+        <section class="hero-section">
+            <div class="glitch-container">
+                <div class="glitch-noise" id="glitchNoise"></div>
+                <div class="content-wrapper">
+                    <h1 class="floating-text" id="mainText">インターネットに依存して戻れなくなった"あの子たち"に、あなたはどんな選択を取る？</h1>
+                    <p class="sub-text">あの子たちは様々なインターネットの問題を抱えています。きっとそれは、あなたたちも知っているし、あなたたちも、"あの子たち"なのかもしれない。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="character-section" id="character-section">
+            <h2 class="section-subtitle fade-in-section">Character</h2>
+            <p class="character-description fade-in-section">様々な要因で堕ちてしまった子のリスト。</p>
+            
+            <div class="character-container">
+                <div class="character-grid" id="characterGrid">
+                    <!-- 上段 -->
+                    <div class="character-row">
+                        <!-- キャラクター1 -->
+                        <div class="character-card char-01" data-index="0">
+                            <div class="character-window">
+                                <img class="char-image" src="sozai/s_01.png" alt="Character 01">
+                                <div class="char-label">承認欲求</div>
+                            </div>
+                        </div>
+
+                        <!-- キャラクター2 -->
+                        <div class="character-card char-02" data-index="1">
+                            <div class="character-window">
+                                <img class="char-image" src="sozai/s_02.png" alt="Character 02">
+                                <div class="char-label">睡眠不足</div>
+                            </div>
+                        </div>
+
+                        <!-- キャラクター3 -->
+                        <div class="character-card char-03" data-index="2">
+                            <div class="character-window">
+                                <div class="coming-soon">coming soon..</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 下段 -->
+                    <div class="character-row">
+                        <!-- キャラクター4 -->
+                        <div class="character-card char-04" data-index="3">
+                            <div class="character-window">
+                                <div class="coming-soon">coming soon..</div>
+                            </div>
+                        </div>
+
+                        <!-- キャラクター5 -->
+                        <div class="character-card char-05" data-index="4">
+                            <div class="character-window">
+                                <div class="coming-soon">coming soon..</div>
+                            </div>
+                        </div>
+
+                        <!-- キャラクター6 -->
+                        <div class="character-card char-06" data-index="5">
+                            <div class="character-window">
+                                <div class="coming-soon">coming soon..</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News セクション -->
+        <section class="news-section" id="news-section">
+            <h2 class="section-title-news fade-in-section">News</h2>
+            <div class="news-container fade-in-section">
+                <article class="news-item">
+                    <span class="news-date">2024.12.20</span>
+                    <p class="news-content">新キャラクター情報が近日公開予定です</p>
+                </article>
+                <article class="news-item">
+                    <span class="news-date">2024.12.15</span>
+                    <p class="news-content">公式サイトがオープンしました</p>
+                </article>
+                <article class="news-item">
+                    <span class="news-date">2024.12.01</span>
+                    <p class="news-content">プロジェクト始動のお知らせ</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SNS セクション -->
+        <section class="sns-section" id="sns-section">
+            <h2 class="section-title-sns fade-in-section">Follow Us</h2>
+            <div class="sns-container fade-in-section">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="sns-link" title="Twitter" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9-3 9-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="sns-link" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M12 16a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="sns-link" title="Discord" aria-label="Discord">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 5.58 2 10c0 1.54.37 3 1 4.29-.1 1.5-.79 2.95-1.86 4.2 1.65-.51 3.41-1.43 4.55-2.43C7.97 17.2 10 18 12 18c5.52 0 10-3.58 10-8s-4.48-8-10-8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle cx="7.5" cy="10.5" r="1.5" fill="currentColor"/>
+                        <circle cx="12" cy="10.5" r="1.5" fill="currentColor"/>
+                        <circle cx="16.5" cy="10.5" r="1.5" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/kadai.js"></script>
+</body>
+</html>
