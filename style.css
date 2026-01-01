@@ -1,0 +1,718 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:wght@400;600&family=Raleway:wght@100;300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body {
+  background: linear-gradient(-45deg, #1a0033, #1a1a4d, #330033, #001a4d, #1a0033);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* カスタムカーソル */
+.custom-cursor {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.6), transparent);
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+  pointer-events: none;
+  z-index: 10000;
+  filter: blur(1px);
+}
+
+/* ナビゲーションメニュー */
+.nav-menu {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInNav 0.8s ease 4s forwards;
+}
+
+@keyframes fadeInNav {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-align: right;
+}
+
+.nav-link:hover {
+  color: #ffb0d5;
+  transform: translateX(-8px);
+}
+
+/* ローディング画面 */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-text {
+  font-size: 24px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-weight: 100;
+}
+
+.progress-bar-wrapper {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #b366ff, #ff66cc);
+  width: 0%;
+  transition: width 0.03s linear;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(179, 102, 255, 0.6);
+}
+
+/* メインコンテンツ */
+.main-content {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 3s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* フェードイン（スクロール時） */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ヒーローセクション */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+.glitch-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  animation: glitchNoise 0.4s ease 3s forwards;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+@keyframes glitchNoise {
+  0% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(2px, 2px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translate(2px, -2px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.floating-text {
+  font-size: clamp(20px, 4vw, 48px);
+  font-weight: 100;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  animation: textFadeIn 1s ease 3.4s forwards;
+  font-family: 'Arial', sans-serif;
+  font-size: clamp(18px, 3.5vw, 42px);
+  font-weight: 100;
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-char {
+  display: inline-block;
+  transform-origin: center;
+  transition: none;
+}
+
+.sub-text {
+  font-size: clamp(13px, 1.8vw, 16px);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0;
+  animation: textFadeIn 1s ease 3.6s forwards;
+  font-family: 'Raleway', sans-serif;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ロゴ表示エリア */
+.logo-display {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  animation: logoFade 1.2s ease 3s forwards;
+}
+
+@keyframes logoFade {
+  0% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+.hero-logo {
+  max-width: 400px;
+  width: 80%;
+  height: auto;
+  filter: drop-shadow(0 10px 40px rgba(255,255,255,0.15));
+  animation: logoFloat 1.2s ease-in-out forwards;
+}
+
+@keyframes logoFloat {
+  0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+  10% { opacity: 1; }
+  85% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(1.1) translateY(-50px); opacity: 0; }
+}
+
+/* ロゴセクション */
+.logo-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  animation: logoSectionFadeIn 0.8s ease 3s forwards;
+  opacity: 0;
+}
+
+@keyframes logoSectionFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.logo-image {
+  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  filter: drop-shadow(0 20px 60px rgba(255, 182, 193, 0.15));
+  animation: logoPulse 3s ease-in-out 3.5s forwards;
+  opacity: 0;
+}
+
+@keyframes logoPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* キャラクターセクション */
+.character-section {
+  min-height: 100vh;
+  padding: 100px 40px;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+.character-description {
+  text-align: center;
+  font-size: clamp(12px, 1.6vw, 16px);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 80px;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.character-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.character-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.character-row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.character-card {
+  flex: 0 0 280px;
+  height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  perspective: 1000px;
+}
+
+.character-card:hover {
+  box-shadow: 0 20px 60px rgba(255, 182, 193, 0.3);
+}
+
+.character-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.character-card:hover .character-window {
+  transform: rotateY(-6deg) rotateX(3deg);
+}
+
+.char-image {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.character-card:hover .char-image {
+  filter: brightness(0.4);
+}
+
+.char-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(16px, 2.5vw, 32px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  letter-spacing: 2px;
+  font-family: 'Playfair Display', serif;
+  background: rgba(0, 0, 0, 0.6);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  backdrop-filter: blur(2px);
+}
+
+.character-card.is-hover .char-label {
+  opacity: 1;
+}
+
+.coming-soon {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* キャラクター背景色 */
+.char-01 {
+  background: linear-gradient(135deg, #d946a0, #ec4899);
+}
+
+.char-02 {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+}
+
+.char-03,
+.char-04,
+.char-05,
+.char-06 {
+  background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+/* News セクション */
+.news-section {
+  padding: 100px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title-news {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  font-family: 'Playfair Display', serif;
+}
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.news-item {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.news-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  min-width: 100px;
+  letter-spacing: 1px;
+}
+
+.news-content {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* SNS セクション */
+.sns-section {
+  padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title-sns {
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* SNS セクション（視認性向上） */
+.sns-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* アイコン外枠を付けて色と光彩を追加 */
+.sns-link {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 182, 193, 0.12);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* SVG に光彩（ブラートーン）を付与して背景と同化しないようにする */
+.sns-link svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 2px 6px rgba(255,182,193,0.12));
+  transition: filter 0.28s ease;
+}
+
+/* ホバーで色変化＋ふわっと拡大＋光彩強化 */
+.sns-link:hover {
+  color: #ffb0d5;
+  transform: translateY(-6px) scale(1.15);
+  background: rgba(255, 176, 213, 0.12);
+  box-shadow: 0 16px 48px rgba(255, 176, 213, 0.2), 0 0 32px rgba(255, 176, 213, 0.18);
+}
+
+.sns-link:hover svg {
+  filter: drop-shadow(0 6px 18px rgba(255,176,213,0.22));
+}
+
+/* 小さめ画面でアイコンの大きさを調整 */
+@media (max-width: 480px) {
+  .sns-link {
+    width: 44px;
+    height: 44px;
+  }
+  .sns-link svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .character-section {
+    padding: 80px 20px;
+  }
+
+  .character-row {
+    gap: 30px;
+  }
+
+  .character-card {
+    flex: 0 0 220px;
+    height: 280px;
+  }
+
+  .section-subtitle {
+    margin-bottom: 40px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-menu {
+    top: 30px;
+    right: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-section {
+    padding: 60px 15px;
+  }
+
+  .character-grid {
+    gap: 40px;
+  }
+
+  .character-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .character-card {
+    flex: 0 0 200px;
+    height: 260px;
+  }
+
+  .floating-text {
+    font-size: 18px;
+  }
+
+  .sns-container {
+    gap: 20px;
+  }
+
+  .news-date {
+    min-width: 80px;
+    font-size: 11px;
+  }
+
+  .nav-menu {
+    top: 20px;
+    right: 20px;
+  }
+}
