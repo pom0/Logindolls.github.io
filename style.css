@@ -460,7 +460,7 @@ body {
   width: 110%;
   height: 110%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   transition: filter 0.3s ease;
 }
 
@@ -503,6 +503,21 @@ body {
   font-style: italic;
   letter-spacing: 1px;
   font-family: 'Raleway', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.coming-soon-text {
+  text-align: center;
+  font-size: clamp(16px, 2.5vw, 32px);
+  color: #888888;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 40px;
 }
 
 /* キャラクター背景色 */
@@ -698,8 +713,15 @@ body {
   }
 
   .character-card {
-    flex: 0 0 220px;
-    height: 280px;
+    flex: 0 0 220px !important;
+    height: 280px !important;
+    min-height: 280px;
+  }
+
+  .character-card:last-child {
+    flex: 0 0 220px !important;
+    height: 280px !important;
+    max-width: 220px;
   }
 
   .char-label {
@@ -743,8 +765,15 @@ body {
   }
 
   .character-card {
-    flex: 0 0 200px;
-    height: 260px;
+    flex: 0 0 200px !important;
+    height: 260px !important;
+    min-height: 260px;
+  }
+
+  .character-card:last-child {
+    flex: 0 0 200px !important;
+    height: 260px !important;
+    max-width: 200px;
   }
 
   .char-label {
