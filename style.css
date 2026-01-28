@@ -1,5 +1,7 @@
 /* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Playfair+Display:wght@400;600&family=Raleway:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+JP+N&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap');
 
 * {
   margin: 0;
@@ -14,13 +16,13 @@ html, body {
   color: #fff;
   font-family: 'Raleway', sans-serif;
   overflow-x: hidden;
-  cursor: none;
+  cursor: auto;
 }
 
 body {
-  background: linear-gradient(-45deg, #1a0033, #1a1a4d, #330033, #001a4d, #1a0033);
+  background: linear-gradient(-45deg, #0a0a0a, #2d1b4e, #1a3a4d, #4d1a3d, #0a0a0a);
   background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 45s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -37,15 +39,7 @@ body {
 
 /* カスタムカーソル */
 .custom-cursor {
-  position: fixed;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 182, 193, 0.6), transparent);
-  box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-  pointer-events: none;
-  z-index: 10000;
-  filter: blur(1px);
+  display: none;
 }
 
 /* ナビゲーションメニュー */
@@ -246,7 +240,7 @@ body {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   opacity: 0;
   animation: textFadeIn 1s ease 3.4s forwards;
-  font-family: 'Arial', sans-serif;
+  font-family: 'WDXL Lubrifont JP N', serif;
   font-size: clamp(18px, 3.5vw, 42px);
   font-weight: 100;
 }
@@ -278,7 +272,7 @@ body {
   margin-top: 40px;
   opacity: 0;
   animation: textFadeIn 1s ease 3.6s forwards;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'WDXL Lubrifont JP N', serif;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -393,7 +387,7 @@ body {
   letter-spacing: 3px;
   margin-bottom: 20px;
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Hina Mincho', serif;
 }
 
 .character-description {
@@ -401,7 +395,7 @@ body {
   font-size: clamp(12px, 1.6vw, 16px);
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 80px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'WDXL Lubrifont JP N', serif;
   letter-spacing: 1px;
   font-weight: 300;
 }
@@ -466,6 +460,7 @@ body {
   width: 110%;
   height: 110%;
   object-fit: cover;
+  object-position: center top;
   transition: filter 0.3s ease;
 }
 
@@ -482,9 +477,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(16px, 2.5vw, 32px);
+  font-size: clamp(18px, 3vw, 40px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -502,7 +497,7 @@ body {
 }
 
 .coming-soon {
-  font-size: 18px;
+  font-size: clamp(16px, 2.5vw, 32px);
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
   font-style: italic;
@@ -519,9 +514,22 @@ body {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
 }
 
-.char-03,
-.char-04,
-.char-05,
+.char-03 {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+}
+
+
+.char-04 {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+}
+
+
+.char-05 {
+  background: linear-gradient(135deg, #8b0000, #c41e3a);
+}
+
+
+
 .char-06 {
   background: linear-gradient(135deg, #1f2937, #374151);
 }
@@ -535,11 +543,11 @@ body {
 
 .section-title-news {
   font-size: clamp(28px, 4vw, 48px);
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
   letter-spacing: 2px;
   margin-bottom: 60px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Hina Mincho', serif;
 }
 
 .news-container {
@@ -582,10 +590,10 @@ body {
 
 .section-title-sns {
   font-size: clamp(24px, 3.5vw, 42px);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 2px;
   margin-bottom: 40px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Hina Mincho', serif;
 }
 
 /* SNS セクション（視認性向上） */
@@ -636,6 +644,29 @@ body {
   filter: drop-shadow(0 6px 18px rgba(255,176,213,0.22));
 }
 
+/* フッターセクション */
+.footer-section {
+  background: #000;
+  padding: 60px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.1));
+}
+
 /* 小さめ画面でアイコンの大きさを調整 */
 @media (max-width: 480px) {
   .sns-link {
@@ -648,19 +679,33 @@ body {
   }
 }
 
-/* レスポンシブ */
-@media (max-width: 768px) {
+/* レスポンシブ SP対応 767px以下 */
+@media (max-width: 767px) {
   .character-section {
     padding: 80px 20px;
   }
 
+  .character-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
   .character-row {
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
   }
 
   .character-card {
     flex: 0 0 220px;
     height: 280px;
+  }
+
+  .char-label {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    font-size: clamp(20px, 4vw, 36px);
   }
 
   .section-subtitle {
@@ -675,6 +720,10 @@ body {
   .nav-menu {
     top: 30px;
     right: 30px;
+  }
+
+  .footer-logo {
+    max-width: 200px;
   }
 }
 
@@ -698,6 +747,10 @@ body {
     height: 260px;
   }
 
+  .char-label {
+    font-size: clamp(18px, 3.5vw, 32px);
+  }
+
   .floating-text {
     font-size: 18px;
   }
@@ -714,5 +767,13 @@ body {
   .nav-menu {
     top: 20px;
     right: 20px;
+  }
+
+  .footer-section {
+    padding: 40px 20px;
+  }
+
+  .footer-logo {
+    max-width: 150px;
   }
 }
