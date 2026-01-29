@@ -456,7 +456,7 @@ body {
   transform: rotateY(-6deg) rotateX(3deg);
 }
 
-/* 画像は通常PCでは200%近くの拡大表現をしていたが、SP崩れを防ぐためSPでの上書きを行う */
+/* デフォルト（PC）: 画像拡大の表現 */
 .char-image {
   width: 120%;
   height: 120%;
@@ -534,17 +534,13 @@ body {
   background: linear-gradient(135deg, #1e40af, #3b82f6);
 }
 
-
 .char-04 {
   background: linear-gradient(135deg, #06b6d4, #0ea5e9);
 }
 
-
 .char-05 {
   background: linear-gradient(135deg, #8b0000, #c41e3a);
 }
-
-
 
 .char-06 {
   background: linear-gradient(135deg, #1f2937, #374151);
@@ -701,27 +697,27 @@ body {
     padding: 80px 20px;
   }
 
-  /* SPではカードを縦積みにしつつ「横長」の同一サイズにする */
+  /* カード縦積み：グリッドと行のギャップを整理 */
   .character-grid {
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 0; /* 行内の余白はカードの margin で管理 */
   }
 
-  /* 各行を block にして内部のカードは単体で幅を取る（全カードを縦積みに） */
+  /* 各行はそのまま block。行内のカードは縦積みにする（HTML が rows に分かれていても均一化） */
   .character-row {
     display: block;
     width: 100%;
   }
 
-  /* 横長にするため固定高さを撤廃し、アスペクト比で横長を指定 */
+  /* 横長にするため固定高さを撤廃、アスペクト比で横長を指定。上下の余白を均一に（上下 6px） */
   .character-card {
     flex: none;
     width: 92%;
     max-width: 720px;
-    margin: 0 auto;
+    margin: 6px auto; /* 上下に均一の余白を付与 */
     height: auto !important;
-    aspect-ratio: 16 / 9; /* 横長にする比率（必要に応じて変更） */
+    aspect-ratio: 16 / 9; /* 横長の比率 */
     border-radius: 12px;
     overflow: hidden;
   }
@@ -730,7 +726,7 @@ body {
     flex: none;
     width: 92%;
     max-width: 720px;
-    margin: 0 auto;
+    margin: 6px auto;
     height: auto !important;
   }
 
@@ -741,7 +737,7 @@ body {
     border-width: 0; /* SPでは境界線を消すか薄くしたい場合は調整 */
   }
 
-  /* 画像をカードに収める（PCでの120%拡大はSPでは解除） */
+  /* 画像はカードに完全フィット（PCでの120%拡大はSPでは解除） */
   .char-image {
     width: 100%;
     height: 100%;
@@ -751,25 +747,29 @@ body {
     transform: none;
   }
 
-  /* ラベルは SP では見やすい右下のバッジにする（必要なら元に戻す） */
+  /* ラベルはPCと同じオーバーレイ縦書きに戻す（表示は .is-hover クラス等で制御） */
   .char-label {
-    writing-mode: horizontal-tb;
-    text-orientation: initial;
-    font-size: clamp(16px, 3.2vw, 20px);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: clamp(16px, 3.2vw, 24px);
     position: absolute;
-    top: auto;
-    left: auto;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-    height: auto;
-    padding: 8px 12px;
-    background: rgba(0,0,0,0.45);
-    opacity: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
-    border-radius: 8px;
-    backdrop-filter: blur(2px);
-    letter-spacing: 1px;
+    border-radius: 0;
+    letter-spacing: 2px;
+  }
+
+  .character-card.is-hover .char-label {
+    opacity: 1;
   }
 
   .section-subtitle {
@@ -791,15 +791,14 @@ body {
   }
 }
 
-
-
+/* さらに小さい端末 */
 @media (max-width: 480px) {
   .character-section {
     padding: 60px 15px;
   }
 
   .character-grid {
-    gap: 36px;
+    gap: 0;
   }
 
   .character-row {
@@ -807,12 +806,12 @@ body {
     width: 100%;
   }
 
-  /* より小さい端末では幅を広げつつ同じアスペクト比を維持 */
+  /* 幅を広げつつ同じアスペクト比と上下余白を維持 */
   .character-card {
     flex: none;
     width: 96%;
     max-width: 680px;
-    margin: 0 auto;
+    margin: 6px auto; /* 同じ上下余白 */
     height: auto !important;
     aspect-ratio: 16 / 9;
     min-height: 0;
@@ -823,7 +822,7 @@ body {
     flex: none;
     width: 96%;
     max-width: 680px;
-    margin: 0 auto;
+    margin: 6px auto;
     height: auto !important;
   }
 
@@ -838,11 +837,16 @@ body {
     object-fit: cover;
   }
 
+  /* ラベルはPCと同じ縦書きオーバーレイ（hover 等で表示される想定） */
   .char-label {
-    font-size: clamp(14px, 3vw, 18px);
-    right: 10px;
-    bottom: 10px;
-    padding: 6px 10px;
+    font-size: clamp(14px, 3vw, 20px);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    opacity: 0;
+  }
+
+  .character-card.is-hover .char-label {
+    opacity: 1;
   }
 
   .floating-text {
