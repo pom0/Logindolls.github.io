@@ -456,6 +456,7 @@ body {
   transform: rotateY(-6deg) rotateX(3deg);
 }
 
+/* 画像は通常PCでは200%近くの拡大表現をしていたが、SP崩れを防ぐためSPでの上書きを行う */
 .char-image {
   width: 120%;
   height: 120%;
@@ -700,8 +701,6 @@ body {
     padding: 80px 20px;
   }
 
-  
-
   /* SPではカードを縦積みにしつつ「横長」の同一サイズにする */
   .character-grid {
     flex-direction: column;
@@ -709,35 +708,68 @@ body {
     gap: 28px;
   }
 
+  /* 各行を block にして内部のカードは単体で幅を取る（全カードを縦積みに） */
   .character-row {
+    display: block;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
   }
 
   /* 横長にするため固定高さを撤廃し、アスペクト比で横長を指定 */
   .character-card {
-    flex: 0 0 92%;
+    flex: none;
     width: 92%;
-    max-width: 700px;
+    max-width: 720px;
+    margin: 0 auto;
     height: auto !important;
     aspect-ratio: 16 / 9; /* 横長にする比率（必要に応じて変更） */
     border-radius: 12px;
+    overflow: hidden;
   }
 
   .character-card:last-child {
-    flex: 0 0 92%;
+    flex: none;
     width: 92%;
-    max-width: 700px;
+    max-width: 720px;
+    margin: 0 auto;
     height: auto !important;
   }
 
+  /* ウィンドウをカードにフィットさせる */
+  .character-window {
+    height: 100%;
+    border-radius: 12px;
+    border-width: 0; /* SPでは境界線を消すか薄くしたい場合は調整 */
+  }
+
+  /* 画像をカードに収める（PCでの120%拡大はSPでは解除） */
+  .char-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: filter 0.3s ease;
+    transform: none;
+  }
+
+  /* ラベルは SP では見やすい右下のバッジにする（必要なら元に戻す） */
   .char-label {
     writing-mode: horizontal-tb;
     text-orientation: initial;
-    font-size: clamp(20px, 4vw, 36px);
+    font-size: clamp(16px, 3.2vw, 20px);
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.45);
+    opacity: 1;
+    pointer-events: none;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+    letter-spacing: 1px;
   }
 
   .section-subtitle {
@@ -767,34 +799,50 @@ body {
   }
 
   .character-grid {
-    gap: 40px;
+    gap: 36px;
   }
 
   .character-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    display: block;
+    width: 100%;
   }
 
   /* より小さい端末では幅を広げつつ同じアスペクト比を維持 */
   .character-card {
-    flex: 0 0 96%;
+    flex: none;
     width: 96%;
     max-width: 680px;
+    margin: 0 auto;
     height: auto !important;
     aspect-ratio: 16 / 9;
     min-height: 0;
+    border-radius: 12px;
   }
 
   .character-card:last-child {
-    flex: 0 0 96%;
+    flex: none;
     width: 96%;
     max-width: 680px;
+    margin: 0 auto;
     height: auto !important;
   }
 
+  .character-window {
+    height: 100%;
+    border-radius: 12px;
+  }
+
+  .char-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .char-label {
-    font-size: clamp(18px, 3.5vw, 32px);
+    font-size: clamp(14px, 3vw, 18px);
+    right: 10px;
+    bottom: 10px;
+    padding: 6px 10px;
   }
 
   .floating-text {
