@@ -700,6 +700,8 @@ body {
     padding: 80px 20px;
   }
 
+  
+
   .character-grid {
     flex-direction: column;
     align-items: center;
@@ -748,6 +750,32 @@ body {
     max-width: 200px;
   }
 }
+
+/* 追加：SP時に3番目(.char-03)と5番目(.char-05)を他と同じサイズに固定する */
+@media (max-width: 767px) {
+  .character-card.char-03,
+  .char-03,
+  .character-card.char-05,
+  .char-05 {
+    flex: 0 0 220px !important;
+    height: 280px !important;
+    min-height: 280px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-card.char-03,
+  .char-03,
+  .character-card.char-05,
+  .char-05 {
+    flex: 0 0 200px !important;
+    height: 260px !important;
+    min-height: 260px;
+    max-width: 200px;
+  }
+}
+
 
 @media (max-width: 480px) {
   .character-section {
