@@ -526,8 +526,9 @@ body {
   background: linear-gradient(135deg, #d946a0, #ec4899);
 }
 
+/* 変更: char-02 を紫系グラデに変更 */
 .char-02 {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, #6d28d9, #9f7aea);
 }
 
 .char-03 {
@@ -710,12 +711,12 @@ body {
     width: 100%;
   }
 
-  /* 横長にするため固定高さを撤廃、アスペクト比で横長を指定。上下の余白を均一に（上下 6px） */
+  /* 横長にするため固定高さを撤廃、アスペクト比で横長を指定。上下の余白を均一に（上下 10px） */
   .character-card {
     flex: none;
     width: 92%;
     max-width: 720px;
-    margin: 6px auto; /* 上下に均一の余白を付与 */
+    margin: 10px auto; /* 上下に均一の余白を付与（増やしました） */
     height: auto !important;
     aspect-ratio: 16 / 9; /* 横長の比率 */
     border-radius: 12px;
@@ -726,7 +727,7 @@ body {
     flex: none;
     width: 92%;
     max-width: 720px;
-    margin: 6px auto;
+    margin: 10px auto;
     height: auto !important;
   }
 
@@ -811,7 +812,7 @@ body {
     flex: none;
     width: 96%;
     max-width: 680px;
-    margin: 6px auto; /* 同じ上下余白 */
+    margin: 10px auto; /* 同じ上下余白（増やしました） */
     height: auto !important;
     aspect-ratio: 16 / 9;
     min-height: 0;
@@ -822,7 +823,7 @@ body {
     flex: none;
     width: 96%;
     max-width: 680px;
-    margin: 6px auto;
+    margin: 10px auto;
     height: auto !important;
   }
 
