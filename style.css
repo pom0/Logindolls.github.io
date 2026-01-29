@@ -702,28 +702,36 @@ body {
 
   
 
+  /* SPではカードを縦積みにしつつ「横長」の同一サイズにする */
   .character-grid {
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 28px;
   }
 
   .character-row {
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
   }
 
+  /* 横長にするため固定高さを撤廃し、アスペクト比で横長を指定 */
   .character-card {
-    flex: 0 0 220px !important;
-    height: 280px !important;
-    min-height: 280px;
+    flex: 0 0 92%;
+    width: 92%;
+    max-width: 700px;
+    height: auto !important;
+    aspect-ratio: 16 / 9; /* 横長にする比率（必要に応じて変更） */
+    border-radius: 12px;
   }
 
   .character-card:last-child {
-    flex: 0 0 220px !important;
-    height: 280px !important;
-    max-width: 220px;
+    flex: 0 0 92%;
+    width: 92%;
+    max-width: 700px;
+    height: auto !important;
   }
 
   .char-label {
@@ -768,16 +776,21 @@ body {
     gap: 20px;
   }
 
+  /* より小さい端末では幅を広げつつ同じアスペクト比を維持 */
   .character-card {
-    flex: 0 0 200px !important;
-    height: 260px !important;
-    min-height: 260px;
+    flex: 0 0 96%;
+    width: 96%;
+    max-width: 680px;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 
   .character-card:last-child {
-    flex: 0 0 200px !important;
-    height: 260px !important;
-    max-width: 200px;
+    flex: 0 0 96%;
+    width: 96%;
+    max-width: 680px;
+    height: auto !important;
   }
 
   .char-label {
